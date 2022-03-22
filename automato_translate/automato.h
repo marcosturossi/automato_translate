@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
-#include "transitions.h"
 #include <vector>
+
+#include "Transitions.h"
+
 using std::string;
 using std::vector;
 
@@ -10,17 +12,16 @@ class Automato
 {
 public:
 	Automato();
-	Automato(string); // Construtor com parametros
-	void openData(string *); 
-	void setTransitions();
+	void setTransitions(string);
 	vector <Transitions> getTransitions();
-	bool checkAvalanche();
-	void solveAvalanche();
+	vector <Transitions> getControlables();
+	vector <Transitions> getUncontrolables();
+	void setEvents();
 
 private:	
 	string automatoName;
-	vector <int> avalancheVector;
 	vector <Transitions> transitionsVector;
-	string rawData;
-	FILE* arq;
+	vector <Transitions> controlableVector;
+	vector <Transitions> uncontrolableVector;
+	vector <Transitions> allStatesVector;	
 };

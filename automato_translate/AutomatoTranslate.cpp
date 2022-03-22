@@ -2,19 +2,17 @@
 //
 
 #include <iostream>
-#include "automato.h"
 #include <string>
+
+#include "Monolitic.h"
 
 using std::string;
 using std::cout;
 
-int main()
-{   
-    string name;
+int main(){
     string path = "testando.ads";
-    Automato automato(path.c_str());
-    automato.setTransitions();
-    automato.solveAvalanche();
+    Monolitic mono(path);
+    mono.generateCode();
 }
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração

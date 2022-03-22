@@ -13,24 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Data">
+      <UniqueIdentifier>{17c6b0f2-5af3-40b0-8a92-e1ceb6f405d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Automatos">
+      <UniqueIdentifier>{f594e358-66ef-43eb-b9ef-fff1043c98c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Data">
+      <UniqueIdentifier>{efdbf63d-5afc-4220-97bf-6aeb900128c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Automatos">
+      <UniqueIdentifier>{bb9403ad-1875-42a7-846a-3a5e6603dd32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="automato_translate.cpp">
+    <ClCompile Include="AutomatoTranslate.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="automato.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Transitions.cpp">
+      <Filter>Arquivos de Origem\Automatos</Filter>
     </ClCompile>
-    <ClCompile Include="transitions.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Supervisor.cpp">
+      <Filter>Arquivos de Origem\Automatos</Filter>
+    </ClCompile>
+    <ClCompile Include="Automato.cpp">
+      <Filter>Arquivos de Origem\Automatos</Filter>
+    </ClCompile>
+    <ClCompile Include="StructuredText.cpp">
+      <Filter>Arquivos de Origem\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager.cpp">
+      <Filter>Arquivos de Origem\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Monolitic.cpp">
+      <Filter>Arquivos de Origem\Automatos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="automato.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Transitions.h">
+      <Filter>Arquivos de Cabeçalho\Automatos</Filter>
     </ClInclude>
-    <ClInclude Include="transitions.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Automato.h">
+      <Filter>Arquivos de Cabeçalho\Automatos</Filter>
+    </ClInclude>
+    <ClInclude Include="Supervisor.h">
+      <Filter>Arquivos de Cabeçalho\Automatos</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>Arquivos de Cabeçalho\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="StructuredText.h">
+      <Filter>Arquivos de Cabeçalho\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Monolitic.h">
+      <Filter>Arquivos de Cabeçalho\Automatos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
