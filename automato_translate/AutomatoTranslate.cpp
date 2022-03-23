@@ -11,8 +11,8 @@ using std::cout;
 
 int main(){
     string path = "testando.ads";
-    Monolitic mono(path);
-    mono.generateCode();
+    vector <string> plantasPath = { "testando.ads", "planta.ads"};
+    Monolitic mono(path, &plantasPath);
 }
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração

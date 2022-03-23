@@ -1,10 +1,15 @@
 #include <string>
 #include <iostream>
+#include <regex>
 
 #include "Transitions.h"
 #include "StructuredText.h"
 
+
 using std::cout;
+using std::regex;
+using std::regex_search;
+using std::regex_replace;
 
 StructuredText::StructuredText() {
 
@@ -21,7 +26,7 @@ void StructuredText::setVarNames(string state, string events) {
 }
 
 string StructuredText::blockVars(string tipo, string data) {
-	return tipo + "\n" + data + "\n" + "ENDVAR \n";
+	return tipo + "\n" + data + "END_VAR \n";
 }
 
 string StructuredText::declareVars(string var, bool initial, int type) {
@@ -36,10 +41,16 @@ string StructuredText::declareVars(string var, bool initial, int type) {
 	if (type == 1) {
 		name = stateDeclared;
 	}
-	else {
+	else if(type == 2) {
 		name = eventDeclared;
 	}
-	return name + var + " BOOL := " + init + ";\n";
+	else if (type == 3) {
+		name = exitDeclared;
+	}
+	else if (type == 4) {
+		name = inputDeclared;
+	}
+	return name + var + ": BOOL := " + init + ";\n";
 }
 
 string StructuredText::updateState(Transitions transitions) {
@@ -47,21 +58,37 @@ string StructuredText::updateState(Transitions transitions) {
 	if (stoi(transitions.getEventName()) % 2 == 0) {
 		data = "IF " + eventDeclared + transitions.getExitState() + " AND " +
 			stateDeclared + transitions.getExitState() + " THEN \n" +
-			stateDeclared + transitions.getEntraceState() + " := 1; \nENDIF \n";
+			stateDeclared + transitions.getEntraceState() + " := TRUE; \n" +
+			eventDeclared + transitions.getExitState() + " := FALSE; \nEND_IF \n";
 	}
 	else {
 		data = "IF " + stateDeclared + transitions.getExitState() + " THEN \n" +
-			stateDeclared + transitions.getEntraceState() + " := 1; \n" +
-			eventDeclared + transitions.getEventName() + " := 1; \nENDIF \n";
+			stateDeclared + transitions.getEntraceState() + " := TRUE; \n" +
+			eventDeclared + transitions.getEventName() + " := TRUE; \n" +
+			eventDeclared + transitions.getExitState() + " := FALSE; \nEND_IF \n";
 	}
 	return data;
 }
 
-string StructuredText::updateExit(Transitions transitions) {
+string StructuredText::updateExit(string controlable, string noncontrolable) {
 	string data;
-	data = "IF " + eventDeclared + transitions.getEventName() + " "
-		+ exitEventDeclared + transitions.getEventName() +  " := TRUE; \n";
-	// Verificar quand ocorre o desligamento da saída
-	cout << data;
+	data = "IF " + eventDeclared + controlable + " THEN \n" +
+		exitDeclared + controlable +  " := TRUE; \nEND_IF \n" +
+		"IF " + eventDeclared + noncontrolable + " THEN \n" +
+		exitDeclared + controlable + " := FALSE; \nEND_IF \n";
 	return data;
+}
+
+string StructuredText::getReadInputs(Transitions transitions) {
+	string data;
+	data = "IF " + inputDeclared + transitions.getEventName() + " THEN \n  " +
+		eventDeclared + transitions.getEventName() + " := TRUE; \nEND_IF \n";
+	return data;
+}
+
+string StructuredText::setIdentation(string code) {
+	string stIf[2] = { "IF", "ENDIF" };
+	string stVar[2] = { "VAR", "ENDVAR" };
+	// TODO implementar identação
+	return "";
 }

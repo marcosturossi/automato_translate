@@ -12,6 +12,7 @@ class Automato
 {
 public:
 	Automato();
+	Automato(string);
 	void setTransitions(string);
 	vector <Transitions> getTransitions();
 	vector <Transitions> getControlables();

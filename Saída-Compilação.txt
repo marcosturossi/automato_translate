@@ -1,0 +1,5 @@
+﻿Build iniciado...
+1>------ Compilação iniciada: Projeto: automato_translate, Configuração: Debug x64 ------
+1>Monolitic.cpp
+1>automato_translate.vcxproj -> C:\Users\Marco\source\repos\automato_translate\x64\Debug\automato_translate.exe
+========== Compilar: 1 com êxito, 0 com falha, 0 atualizados, 0 ignorados ==========

@@ -48,8 +48,6 @@ void DataManager::salvarData(string data) {
 	int result, err;
 	err = fopen_s(&arq, newFile.c_str(), "wt");
 	result = fputs(data.c_str(), arq);
-	if (result == EOF) {
-	}		cout << "Erro na gravação";
 }
 
 void DataManager::setFileName(string name) {

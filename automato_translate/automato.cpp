@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Automato.h"
+#include "DataManager.h"
 
 using std::string;
 using std::cout;
@@ -13,7 +14,12 @@ using std::regex;
 using std::regex_search;
 
 
-Automato::Automato() {
+Automato::Automato(){}
+
+Automato::Automato(string path) {
+	DataManager openData;
+	string rawData = openData.openADS(&path);
+	setTransitions(rawData);
 
 }
 
@@ -25,6 +31,7 @@ void Automato::setTransitions(string data) {
 			string(sizeof(data[i+1]), data[i+1]),
 			string(sizeof(data[i+2]), data[i+2])));
 	}
+	setEvents();
 }
 
 

@@ -14,13 +14,16 @@ public:
 	string updateState(Transitions);
 	void setVarNames(string, string);
 	void setDeclarationType(bool);
-	string updateExit(Transitions);
-
+	string updateExit(string, string);
+	string getReadInputs(Transitions);
+	string setIdentation(string);
 
 private:
 	string stateDeclared = "STATE";
 	string eventDeclared = "EVENT";
-	string exitEventDeclared = "EXIT";
+	string inputDeclared = "INPUT";
+	string exitDeclared = "EXIT";
 	string identation = "    ";
 	bool declarationVar = 1;
+	
 };

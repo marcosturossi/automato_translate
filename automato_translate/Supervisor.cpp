@@ -1,6 +1,8 @@
 #include "Supervisor.h"
 
 
+Supervisor::Supervisor() {}
+
 bool Supervisor::checkAvalanche() {
 	/* Verifica se existe efeito avalanche no automato */
 	// TODO verificar a lógica
