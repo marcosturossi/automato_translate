@@ -8,7 +8,6 @@
 
 using std::cout;
 using std::regex;
-using std::regex_search;
 using std::regex_replace;
 
 StructuredText::StructuredText() {
@@ -57,14 +56,14 @@ string StructuredText::updateState(Transitions transitions) {
 	string data = "";
 	if (stoi(transitions.getEventName()) % 2 == 0) {
 		data = "IF " + eventDeclared + transitions.getExitState() + " AND " +
-			stateDeclared + transitions.getExitState() + " THEN \n" +
-			stateDeclared + transitions.getEntraceState() + " := TRUE; \n" +
+			stateDeclared + transitions.getExitState() + " THEN \n" + identation +
+			stateDeclared + transitions.getEntraceState() + " := TRUE; \n" + identation +
 			eventDeclared + transitions.getExitState() + " := FALSE; \nEND_IF \n";
 	}
 	else {
-		data = "IF " + stateDeclared + transitions.getExitState() + " THEN \n" +
-			stateDeclared + transitions.getEntraceState() + " := TRUE; \n" +
-			eventDeclared + transitions.getEventName() + " := TRUE; \n" +
+		data = "IF " + stateDeclared + transitions.getExitState() + " THEN \n" + identation +
+			stateDeclared + transitions.getEntraceState() + " := TRUE; \n"+  identation +
+			eventDeclared + transitions.getEventName() + " := TRUE; \n" + identation +
 			eventDeclared + transitions.getExitState() + " := FALSE; \nEND_IF \n";
 	}
 	return data;
@@ -72,23 +71,16 @@ string StructuredText::updateState(Transitions transitions) {
 
 string StructuredText::updateExit(string controlable, string noncontrolable) {
 	string data;
-	data = "IF " + eventDeclared + controlable + " THEN \n" +
+	data = "IF " + eventDeclared + controlable + " THEN \n" + identation +
 		exitDeclared + controlable +  " := TRUE; \nEND_IF \n" +
-		"IF " + eventDeclared + noncontrolable + " THEN \n" +
+		"IF " + eventDeclared + noncontrolable + " THEN \n" + identation +
 		exitDeclared + controlable + " := FALSE; \nEND_IF \n";
 	return data;
 }
 
 string StructuredText::getReadInputs(Transitions transitions) {
 	string data;
-	data = "IF " + inputDeclared + transitions.getEventName() + " THEN \n  " +
+	data = "IF " + inputDeclared + transitions.getEventName() + " THEN \n" + identation +
 		eventDeclared + transitions.getEventName() + " := TRUE; \nEND_IF \n";
 	return data;
-}
-
-string StructuredText::setIdentation(string code) {
-	string stIf[2] = { "IF", "ENDIF" };
-	string stVar[2] = { "VAR", "ENDVAR" };
-	// TODO implementar identação
-	return "";
 }

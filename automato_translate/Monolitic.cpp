@@ -16,7 +16,8 @@ Monolitic::Monolitic(string path, vector <string> *plantasPath ) {
 	DataManager data;
 	rawData = data.openADS(&path);
 	setTransitions(rawData);
-	setPlantas();	
+	setPlantas();
+	cout << generateCode();
 	data.salvarData(generateCode());	
 }
 

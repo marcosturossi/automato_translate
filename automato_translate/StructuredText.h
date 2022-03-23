@@ -16,7 +16,6 @@ public:
 	void setDeclarationType(bool);
 	string updateExit(string, string);
 	string getReadInputs(Transitions);
-	string setIdentation(string);
 
 private:
 	string stateDeclared = "STATE";
